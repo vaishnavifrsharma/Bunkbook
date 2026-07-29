@@ -1,0 +1,558 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+@import "tailwindcss";
+
+/* ============================================================
+   BUNKBOOK — Powder Blue / Espresso / Butter Yellow
+   Light mode only
+   ============================================================ */
+
+:root {
+  /* Canvas */
+  --cream:          #F0F5F9;   /* Powder Blue tinted canvas */
+  --cream-dark:     #DDE7F0;   /* Slightly deeper for spiral / sidebar */
+  --paper-card-bg:  #FFFFFF;
+
+  /* Ink */
+  --ink:            #250A0A;   /* Espresso Burgundy — primary text */
+  --ink-light:      #5A2E2E;   /* Secondary text */
+  --ink-faint:      #8A6060;   /* Tertiary / hints */
+
+  /* Accents from palette */
+  --accent-blue:    #A6BFD2;   /* Powder Blue */
+  --accent-yellow:  #F1EA91;   /* Butter Yellow */
+
+  /* Grid lines */
+  --grid-line:        rgba(166, 191, 210, 0.30);
+  --grid-line-strong: rgba(166, 191, 210, 0.55);
+
+  /* Status */
+  --status-green:     #1A6B3A;
+  --status-green-bg:  rgba(26, 107, 58, 0.10);
+  --status-yellow:    #8B6D00;
+  --status-yellow-bg: rgba(139, 109, 0, 0.10);
+  --status-red:       #B91C1C;
+  --status-red-bg:    rgba(185, 28, 28, 0.10);
+
+  /* Fonts */
+  --font-serif: 'Outfit', -apple-system, sans-serif;
+  --font-sans:  'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-hand:  var(--font-serif);
+  --font-body:  var(--font-sans);
+
+  /* Shadows */
+  --shadow-paper:       0 1px 4px rgba(37,10,10,0.06), 0 4px 16px rgba(37,10,10,0.05);
+  --shadow-paper-hover: 0 4px 20px rgba(37,10,10,0.12);
+  --shadow-card:        0 2px 8px rgba(37,10,10,0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Canvas - Deep warm off-black */
+    --cream:          #121212;   
+    --cream-dark:     #0A0A0A;   
+    --paper-card-bg:  #1C1C1E;
+
+    /* Ink - Soft off-white */
+    --ink:            #F3F4F6;   
+    --ink-light:      #D1D5DB;   
+    --ink-faint:      #9CA3AF;   
+
+    /* Accents */
+    --accent-blue:    #374151;   
+    --accent-yellow:  #D97706;
+
+    /* Grid lines */
+    --grid-line:        rgba(255, 255, 255, 0.08);
+    --grid-line-strong: rgba(255, 255, 255, 0.15);
+
+    /* Status - brightened for dark mode contrast */
+    --status-green:     #4ADE80;
+    --status-green-bg:  rgba(74, 222, 128, 0.15);
+    --status-yellow:    #FBBF24;
+    --status-yellow-bg: rgba(251, 191, 36, 0.15);
+    --status-red:       #F87171;
+    --status-red-bg:    rgba(248, 113, 113, 0.15);
+
+    /* Shadows - deeper for dark mode */
+    --shadow-paper:       0 4px 12px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.3);
+    --shadow-paper-hover: 0 8px 32px rgba(0,0,0,0.5);
+    --shadow-card:        0 2px 12px rgba(0,0,0,0.4);
+  }
+}
+
+@theme inline {
+  --color-cream:      var(--cream);
+  --color-cream-dark: var(--cream-dark);
+  --color-ink:        var(--ink);
+  --color-ink-light:  var(--ink-light);
+  --color-ink-faint:  var(--ink-faint);
+  --font-hand:        var(--font-hand);
+  --font-body:        var(--font-body);
+}
+
+/* ============================================================
+   BODY & RESET
+   ============================================================ */
+body {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* ── Consistent page-level typography ── */
+/* Page title  : 1.5rem (24px) bold serif — used for every page h1 */
+/* Section label: 0.7rem uppercase tracked — the small label above sections */
+/* Body text   : 0.9375rem (15px) body font */
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.page-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink-faint);
+  margin-top: 2px;
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ============================================================
+   GRID-PAPER BACKGROUND
+   ============================================================ */
+.notebook-paper {
+  background-color: var(--cream);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -1px -1px;
+}
+
+/* ============================================================
+   SPIRAL BINDING (vertical desktop / horizontal mobile)
+   ============================================================ */
+.notebook-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.spiral-binding {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 44px; z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 18px;
+  gap: 14px;
+  background: linear-gradient(90deg, var(--cream-dark) 0%, var(--cream) 100%);
+  border-right: 2px dashed var(--grid-line-strong);
+}
+
+@media (max-width: 768px) {
+  .spiral-binding {
+    position: fixed;
+    left: 0; right: 0; top: 0; bottom: auto;
+    width: 100%; height: 26px;
+    flex-direction: row;
+    padding: 0 16px; gap: 12px;
+    justify-content: center;
+    border-right: none;
+    border-bottom: 2px dashed var(--grid-line-strong);
+  }
+}
+
+.notebook-content {
+  margin-left: 44px;
+  min-height: 100vh;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .notebook-content { margin-left: 0; margin-top: 26px; }
+}
+
+/* ============================================================
+   PAPER CARD
+   ============================================================ */
+.paper-card {
+  background: var(--paper-card-bg);
+  border: 1.5px solid var(--grid-line-strong);
+  border-radius: 14px;
+  box-shadow: var(--shadow-paper);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.paper-card:hover {
+  box-shadow: var(--shadow-paper-hover);
+  border-color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-notebook {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 10px;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-notebook:hover  { background: var(--ink); color: var(--accent-yellow); }
+.btn-notebook:active { transform: scale(0.96); }
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--accent-yellow);
+  border-color: var(--ink);
+}
+.btn-primary:hover {
+  background: var(--accent-blue);
+  color: var(--ink);
+  border-color: var(--accent-blue);
+}
+
+.btn-danger {
+  border-color: var(--status-red);
+  color: var(--status-red);
+  background: transparent;
+}
+.btn-danger:hover { background: var(--status-red); color: white; }
+
+/* ============================================================
+   SUBJECT TILE CARD
+   ============================================================ */
+.subject-tile {
+  background: var(--paper-card-bg);
+  border: 1.5px solid var(--grid-line-strong);
+  border-radius: 14px;
+  box-shadow: var(--shadow-paper);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.subject-tile:hover {
+  box-shadow: var(--shadow-paper-hover);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   MARK BUTTONS (quick attendance actions on cards)
+   ============================================================ */
+.mark-btn {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 8px 4px;
+  border-radius: 8px;
+  border: 1.5px solid;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.mark-btn:active { transform: scale(0.95); }
+
+.mark-btn-present {
+  border-color: var(--status-green);
+  color: var(--status-green);
+  background: var(--status-green-bg);
+}
+.mark-btn-present:hover { background: var(--status-green); color: white; }
+
+.mark-btn-absent {
+  border-color: var(--status-red);
+  color: var(--status-red);
+  background: var(--status-red-bg);
+}
+.mark-btn-absent:hover { background: var(--status-red); color: white; }
+
+.mark-btn-cancel {
+  border-color: var(--ink-faint);
+  color: var(--ink-faint);
+  background: transparent;
+}
+.mark-btn-cancel:hover { background: var(--grid-line-strong); color: var(--ink); }
+
+/* ============================================================
+   FORM ELEMENTS
+   ============================================================ */
+.input-notebook {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  padding: 10px 14px;
+  border: 1.5px solid var(--grid-line-strong);
+  border-radius: 10px;
+  background: var(--paper-card-bg);
+  color: var(--ink);
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.input-notebook:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(166,191,210,0.35);
+}
+.input-notebook::placeholder { color: var(--ink-faint); }
+
+.label-notebook {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink-light);
+  display: block;
+  margin-bottom: 5px;
+}
+
+select.input-notebook {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238A6060' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 38px;
+}
+
+/* ============================================================
+   STATUS BADGES (inline pills)
+   ============================================================ */
+.status-safe    { color: var(--status-green);  background: var(--status-green-bg);  border: 1px solid rgba(26,107,58,0.2); }
+.status-warning { color: var(--status-yellow); background: var(--status-yellow-bg); border: 1px solid rgba(139,109,0,0.2); }
+.status-danger  { color: var(--status-red);    background: var(--status-red-bg);    border: 1px solid rgba(185,28,28,0.2); }
+
+/* ============================================================
+   CALENDAR
+   ============================================================ */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  padding: 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.15s ease;
+  min-height: 72px;
+  border: 1px solid var(--grid-line);
+}
+
+@media (max-width: 768px) {
+  .calendar-day { min-height: 48px; aspect-ratio: auto; }
+}
+
+.calendar-day:hover         { background: var(--grid-line); border-color: var(--accent-blue); }
+.calendar-day.today         { outline: 2px solid var(--ink); outline-offset: -2px; background: rgba(241,234,145,0.25); }
+.calendar-day.holiday       { background: rgba(166,191,210,0.28); }
+.calendar-day.mass-bunk     { background: rgba(185,28,28,0.12); }
+.calendar-day.outside-month { opacity: 0.35; }
+
+.class-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  justify-content: center;
+  margin-top: 3px;
+}
+
+.class-dot { width: 8px; height: 8px; border-radius: 50%; transition: all 0.2s ease; }
+.class-dot.present   { opacity: 1; }
+.class-dot.absent    { opacity: 0.4; outline: 2px solid var(--status-red); outline-offset: -2px; }
+.class-dot.cancelled { opacity: 0.25; }
+
+.day-detail {
+  background: var(--paper-card-bg);
+  border: 1.5px solid var(--grid-line-strong);
+  border-radius: 12px;
+  box-shadow: var(--shadow-paper);
+  margin-top: 12px;
+}
+
+.class-slot-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--grid-line);
+  transition: background 0.15s ease;
+}
+.class-slot-row:last-child { border-bottom: none; }
+.class-slot-row:hover      { background: var(--grid-line); }
+
+.status-chip {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1.5px solid;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.status-chip:active    { transform: scale(0.95); }
+.status-chip.present   { border-color: var(--status-green);  color: var(--status-green);  background: var(--status-green-bg); }
+.status-chip.absent    { border-color: var(--status-red);    color: var(--status-red);    background: var(--status-red-bg); }
+.status-chip.cancelled { border-color: var(--ink-faint);     color: var(--ink-faint);     background: var(--grid-line); }
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(37,10,10,0.5);
+  backdrop-filter: blur(5px);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-content {
+  background: var(--paper-card-bg);
+  border: 1.5px solid var(--grid-line-strong);
+  border-radius: 16px;
+  box-shadow: 0 24px 64px rgba(37,10,10,0.3);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: var(--ink);
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 40;
+  background: var(--paper-card-bg);
+  border-top: 1.5px solid var(--grid-line-strong);
+  padding: 6px 0 env(safe-area-inset-bottom, 8px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+@media (min-width: 769px) { .bottom-nav { display: none; } }
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  color: var(--ink-faint);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.nav-item.active { color: var(--ink); }
+
+.sidebar-nav { display: none; }
+
+@media (min-width: 769px) {
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 20px 12px;
+    padding-top: 24px;
+    position: fixed;
+    left: 44px; top: 0; bottom: 0;
+    width: 210px;
+    background: linear-gradient(90deg, var(--cream-dark) 60%, transparent 100%);
+    border-right: 1.5px solid var(--grid-line);
+    z-index: 30;
+    transition: width 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .sidebar-nav.collapsed { width: 68px; }
+  .notebook-content-with-sidebar { margin-left: 254px; transition: margin-left 0.3s cubic-bezier(0.4,0,0.2,1); }
+  body.sidebar-collapsed .notebook-content-with-sidebar { margin-left: 112px; }
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: var(--ink-light);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+.sidebar-item:hover { background: var(--grid-line); color: var(--ink); }
+.sidebar-item.active {
+  background: var(--accent-yellow);
+  color: var(--ink);
+  font-weight: 700;
+  border: 1px solid rgba(37,10,10,0.15);
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.margin-note {
+  font-family: var(--font-serif);
+  color: var(--status-red);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-left: 3px solid var(--status-red);
+  background: var(--status-red-bg);
+  border-radius: 0 4px 4px 0;
+}
+
+.text-hand  { font-family: var(--font-serif); }
+.text-body  { font-family: var(--font-body); }
+.text-serif { font-family: var(--font-serif); }

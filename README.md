@@ -15,7 +15,7 @@ BunkBook is a mobile-first Progressive Web App (PWA) built for college students 
 - **Per-subject analytics** — See detailed attendance stats, logbook of absences, and bunkability scores for each subject.
 - **PWA / Installable** — Works offline after the first load. Add to Home Screen for a native app experience (no App Store required).
 - **Web Push Notifications** — Get a reminder 10 minutes before a class starts with one-tap "✓ Present / ✗ Absent" action buttons on your lock screen.
-- **Dark & Light Mode** — Automatically switches between the light "Powder Blue" notebook theme and a rich dark "Ink" theme based on your OS setting.
+- **Dark & Light Mode** — Switch between the light "Powder Blue" notebook theme and a rich dark "Ink" theme manually via Settings, or let it sync automatically with your OS.
 
 ---
 
@@ -45,7 +45,7 @@ BunkBook is a mobile-first Progressive Web App (PWA) built for college students 
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/bunkbook.git
+git clone https://github.com/vaishnavifrsharma/Bunkbook.git
 cd bunkbook/attendance-app
 npm install
 ```

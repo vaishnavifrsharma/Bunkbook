@@ -8,6 +8,7 @@ import type { Semester } from '@/lib/types';
 import PaperCard from '@/components/ui/PaperCard';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 export default function SettingsPage() {
   const [loading, setLoading] = useState(true);
@@ -224,6 +225,17 @@ export default function SettingsPage() {
             className="hidden"
             onChange={handleRestoreBackup}
           />
+        </div>
+      </PaperCard>
+
+      {/* Appearance */}
+      <PaperCard className="mb-4" delay={0.07}>
+        <div className="relative z-10 p-5">
+          <h2 className="text-xl font-serif font-bold mb-3">🎨 Appearance</h2>
+          <p className="text-body text-sm text-[var(--ink-light)] mb-4">
+            Switch between the Light Notebook and Dark Ink themes, or follow your system settings.
+          </p>
+          <ThemeToggle />
         </div>
       </PaperCard>
 

@@ -45,39 +45,37 @@
   --shadow-card:        0 2px 8px rgba(37,10,10,0.05);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Canvas - Deep warm off-black */
-    --cream:          #121212;   
-    --cream-dark:     #0A0A0A;   
-    --paper-card-bg:  #1C1C1E;
+.dark {
+  /* Canvas - Deep warm off-black */
+  --cream:          #121212;   
+  --cream-dark:     #0A0A0A;   
+  --paper-card-bg:  #1C1C1E;
 
-    /* Ink - Soft off-white */
-    --ink:            #F3F4F6;   
-    --ink-light:      #D1D5DB;   
-    --ink-faint:      #9CA3AF;   
+  /* Ink - Soft off-white */
+  --ink:            #F3F4F6;   
+  --ink-light:      #D1D5DB;   
+  --ink-faint:      #9CA3AF;   
 
-    /* Accents */
-    --accent-blue:    #374151;   
-    --accent-yellow:  #D97706;
+  /* Accents */
+  --accent-blue:    #374151;   
+  --accent-yellow:  #D97706;
 
-    /* Grid lines */
-    --grid-line:        rgba(255, 255, 255, 0.08);
-    --grid-line-strong: rgba(255, 255, 255, 0.15);
+  /* Grid lines */
+  --grid-line:        rgba(255, 255, 255, 0.08);
+  --grid-line-strong: rgba(255, 255, 255, 0.15);
 
-    /* Status - brightened for dark mode contrast */
-    --status-green:     #4ADE80;
-    --status-green-bg:  rgba(74, 222, 128, 0.15);
-    --status-yellow:    #FBBF24;
-    --status-yellow-bg: rgba(251, 191, 36, 0.15);
-    --status-red:       #F87171;
-    --status-red-bg:    rgba(248, 113, 113, 0.15);
+  /* Status - brightened for dark mode contrast */
+  --status-green:     #4ADE80;
+  --status-green-bg:  rgba(74, 222, 128, 0.15);
+  --status-yellow:    #FBBF24;
+  --status-yellow-bg: rgba(251, 191, 36, 0.15);
+  --status-red:       #F87171;
+  --status-red-bg:    rgba(248, 113, 113, 0.15);
 
-    /* Shadows - deeper for dark mode */
-    --shadow-paper:       0 4px 12px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.3);
-    --shadow-paper-hover: 0 8px 32px rgba(0,0,0,0.5);
-    --shadow-card:        0 2px 12px rgba(0,0,0,0.4);
-  }
+  /* Shadows - deeper for dark mode */
+  --shadow-paper:       0 4px 12px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.3);
+  --shadow-paper-hover: 0 8px 32px rgba(0,0,0,0.5);
+  --shadow-card:        0 2px 12px rgba(0,0,0,0.4);
 }
 
 @theme inline {
